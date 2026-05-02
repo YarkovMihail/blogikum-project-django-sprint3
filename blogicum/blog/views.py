@@ -1,7 +1,10 @@
 from django.shortcuts import render, get_object_or_404
+
 from django.utils import timezone
 
 from .models import Post, Category
+
+from .constants import POSTS_ON_INDEX
 
 
 def get_filtered_posts():
@@ -13,7 +16,7 @@ def get_filtered_posts():
 
 
 def index(request):
-    post_list = get_filtered_posts()[:5]
+    post_list = get_filtered_posts()[:POSTS_ON_INDEX]
     return render(request, 'blog/index.html', {'post_list': post_list})
 
 
